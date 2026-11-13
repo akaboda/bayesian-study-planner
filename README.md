@@ -34,14 +34,22 @@ The selected action will be integrated with a calendar API to help students orga
 9. Record a video demonstrating the working features.
 10. Complete the documentation, report, and final submission.
 
+
 ## Current Project Status
 
-- Project setup: In progress
-- Bayesian network design: In progress 
+- Project setup: Complete
+- GitHub repository setup: Complete
+- Bayesian network design: Complete
+- Bayesian network implementation: Complete
+- Handcrafted CPT implementation: Complete
+- Network validation: Complete (model.check_model() returned True)
 - Bayesian inference: Not started
 - Utility function: Not started
 - Calendar integration: Not started
-- Testing: Not started
+- Testing: In progress (initial network validation completed)
+- Video demonstration: Not started
+- Final report: Not started
+
 
 ## Known Bugs
 
@@ -160,7 +168,7 @@ Calculus receives a slightly higher weight because the model assumes it requires
 
 All probability values are handcrafted assumptions for demonstration purposes. The model is not trained on real student data.
 
-The full 32-column CPT will be generated programmatically and validated to ensure each conditional distribution sums to 1.
+The full 32-column CPT is generated programmatically in `bayesian_model.py` using Python's `itertools.product`. Each conditional probability distribution sums to 1, and the Bayesian network successfully passes `model.check_model()` validation.
 
 
 ### Prior Probabilities: Concept Difficulty
@@ -178,3 +186,27 @@ These probabilities are handcrafted assumptions for a fictional mathematics cour
 Calculus is assumed to be more difficult on average than Algebra and Statistics. The values are not based on empirical student data.
 
 When concept difficulty is provided as an observation, the model uses that information during inference.
+
+
+## Project File Structure
+
+- `README.md`: Documents the project overview, original plan, Bayesian network design, progress, and known bugs.
+- `bayesian_model.py`: Implements the nine-variable Bayesian network, handcrafted CPTs, and model validation using pgmpy.
+- `.gitignore`: Prevents temporary Python files, virtual environment files, and sensitive configuration files from being uploaded to GitHub.
+
+Additional files will be documented as they are created.
+
+## Initial Validation
+
+The Bayesian network was implemented using pgmpy.
+
+Initial validation confirmed:
+- All 9 variables were created.
+- All 8 directed relationships were defined.
+- All 9 variables have probability distributions.
+- The Study Need CPT contains 32 parent-state combinations.
+- `model.check_model()` returned True.
+
+These checks confirm that the network is structurally and probabilistically valid. They do not yet establish that its predictions are accurate or that it behaves as intended in different student scenarios.
+
+Further inference and scenario testing will be completed during development.
